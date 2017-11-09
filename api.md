@@ -2,7 +2,7 @@
 layout: main
 ---
 
-## API v1 - francescou/docker-compose-ui:1.9.0
+## API v1 - francescou/docker-compose-ui:1.9.1
 
 ### list docker compose projects
 

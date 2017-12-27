@@ -23,8 +23,9 @@ The application can be deployed as a single container, there are no dependencies
 
 | Compose file format  | Docker Engine |
 | ------------- | ------------- |
-| 3.3| 17.06.0+ |
+| 3.3 - 3.5 | 17.06.0+ |
 | 3.0 – 3.2| 1.13.0+ |
+| 2.3	| 17.06.0+ |
 | 2.2	| 1.13.0+ |
 | 2.1	| 1.12.0+ |
 | 2.0	| 1.10.0+ |
@@ -39,25 +40,26 @@ Run the following command in terminal:
     -p 5000:5000 \
     -w /opt/docker-compose-projects/ \
     -v /var/run/docker.sock:/var/run/docker.sock \
-    francescou/docker-compose-ui:1.9.1
-
-or, if you already have docker-compose installed, just `docker-compose up`.
+    francescou/docker-compose-ui:1.10.0
 
 You have to wait while Docker pulls the container from the Docker Hub: <https://hub.docker.com/r/francescou/docker-compose-ui/>
 
 Then open your browser to `http://localhost:5000`
 
+If you already have docker-compose installed, you can run `docker-compose up` and then open your browser to `http://localhost:8080`.
+
+
 ### Add your own docker-compose projects
 
-to use use your own docker-compose projects run this command from the directory containing your docker-compose.yml files:
+to use your own docker-compose projects run this command from the directory containing your docker-compose.yml files:
 
     docker run \
         --name docker-compose-ui \
         -v $(pwd):$(pwd) \
-        -w $(pwd) \
+        -w $(dirname $(pwd)) \
         -p 5000:5000 \
         -v /var/run/docker.sock:/var/run/docker.sock \
-        francescou/docker-compose-ui:1.9.1
+        francescou/docker-compose-ui:1.10.0
 
 you can download my example projects into */home/user/docker-compose-ui/demo-projects/* from https://github.com/francescou/docker-compose-ui/tree/master/demo-projects
 
@@ -69,7 +71,7 @@ you can download my example projects into */home/user/docker-compose-ui/demo-pro
     -w /opt/docker-compose-projects-git/ \
     -v /var/run/docker.sock:/var/run/docker.sock  \
     -e GIT_REPO=https://github.com/francescou/docker-compose-ui.git \
-    francescou/docker-compose-ui:1.9.1
+    francescou/docker-compose-ui:1.10.0
 
 ### Note about scaling services
 
@@ -100,11 +102,9 @@ Example usage:
     docker run \
         --name docker-compose-ui \
         -p 5000:5000 \
-        -v $(pwd):$(pwd) \
-        -w $(pwd) \
         -v /var/run/docker.sock:/var/run/docker.sock  \
         -e 'WEB_CONSOLE_PATTERN=http://localhost:8888/web-console/?cid={containerName}&cmd={command}' \
-        francescou/docker-compose-ui:1.9.1
+        francescou/docker-compose-ui:1.10.0
 
 
 ## Remote docker host
@@ -114,10 +114,8 @@ You can also run containers on a remote docker host, e.g.
     docker run \
         --name docker-compose-ui \
         -p 5000:5000 \
-        -v $(pwd):$(pwd) \
-        -w $(pwd) \
         -e DOCKER_HOST=remote-docker-host:2375 \
-        francescou/docker-compose-ui:1.9.1
+        francescou/docker-compose-ui:1.10.0
 
 
 ### Docker Swarm or HTTPS Remote docker host
@@ -137,7 +135,7 @@ For example:
         -p 5000:5000 \
         -w /opt/docker-compose-projects/ \
         -v /home/user/.docker/config.json:/root/.docker/config.json:ro \
-        francescou/docker-compose-ui:1.9.1
+        francescou/docker-compose-ui:1.10.0
 
 ## Technologies
 

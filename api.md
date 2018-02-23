@@ -107,7 +107,11 @@ The `env` parameter is optional. If it's specified, its content will be put in a
 
 ### get value of `WEB_CONSOLE_PATTERN` env var
 
-    curl http://localhost:5000/api/v1/get_web_console_pattern
+    curl http://localhost:5000/api/v1/web_console_pattern
+
+### get value of `DOCKER_COMPOSE_REGISTRY` env var
+
+    curl http://localhost:5000/api/v1/compose-registry
 
 ### set docker daemon socket(s) to connect to
 

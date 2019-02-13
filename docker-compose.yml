@@ -13,6 +13,8 @@ services:
         volumes:
             - /var/run/docker.sock:/var/run/docker.sock
             #- /home/user/docker-compose-ui/demo-projects:/home/user/docker-compose-ui/demo-projects
+    labels:
+      shipyard.route: '/'
     web_console:
         image: bitbull/docker-exec-web-console
         environment:

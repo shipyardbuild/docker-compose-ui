@@ -1,7 +1,7 @@
 version: "2"
 
 services:
-    docker_compose_ui:
+    docker-compose-ui:
         restart: always
         image: francescou/docker-compose-ui:1.13.0
         container_name: docker_compose_ui
@@ -13,7 +13,9 @@ services:
         volumes:
             - /var/run/docker.sock:/var/run/docker.sock
             #- /home/user/docker-compose-ui/demo-projects:/home/user/docker-compose-ui/demo-projects
-    web_console:
+    labels:
+      shipyard.route: '/'
+    web-console:
         image: bitbull/docker-exec-web-console
         environment:
         - 'CONTEXT_PATH=/web-console/'
